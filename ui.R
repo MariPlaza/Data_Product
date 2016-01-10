@@ -22,7 +22,7 @@ shinyUI(pageWithSidebar(
                     list("all","Apple", "Banana", "Pineapple", "Pear", 
                          "Strawberry", "Tangerine", "Orange", "Kiwi", "Watermelon", "Melon"), "all") ,
         h5("Data Source:", a("Nutrition Data Self", href="http://nutritiondata.self.com/")), 
-        h5("Application Documentation on:", a("Mari Plaza's Github", href="https://github.com/MariPlaza/Data_Product")), 
+        h5("Application Documentation on:", a("Mari Plaza's Github", href="https://github.com/MariPlaza/Data_Product/blob/master/App%20Documentation.md")), 
         h5(""), 
         h5(""), 
         h5(""), 
