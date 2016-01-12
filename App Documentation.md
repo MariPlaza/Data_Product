@@ -33,6 +33,7 @@ It provides a text with the suggestion according to the selected inputs or varia
 #### Graph
 
 It shows a comparison graph based on the variables selected. 
+
 |Variable   | Type of Graph  | Axis and Variables |
 |---|---|---|
 |Calories| Bar Graph |Fruit (X-Axis) and Calories (Y-Axis)|
