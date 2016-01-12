@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fruit comparison Application</title>
+  <title>Fruits comparison Application</title>
   <meta charset="utf-8">
-  <meta name="description" content="Fruit comparison Application">
+  <meta name="description" content="Fruits comparison Application">
   <meta name="author" content="Maria Ines Plaza Schwarck">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,8 +32,8 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Fruit comparison Application</h1>
-    <h2>A practical tool for better choises</h2>
+    <h1>Fruits comparison Application</h1>
+    <h2>A practical tool for better choices</h2>
     <p>Maria Ines Plaza Schwarck<br/>Data Analyst</p>
   </hgroup>
   <article></article>  
@@ -43,51 +43,89 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Motivation of the Application</h2>
+    <h2>Overview</h2>
   </hgroup>
   <article data-timings="">
-    <p>Nowadays, there are plenty of information regarding Nutrition, nonetheless the population is confused because it is not clear </p>
+    <h3>Motivation of the Application</h3>
+
+<p>Nowadays, there are plenty of information and databases regarding Nutrition, nonetheless the population is normally confused because it is not clear when a food is convenient or not in terms of health and nutrition. As almost everything in life, the decision depends on what you want to reach, and depending on what is your goal, the criterias for the decision are going to be different.</p>
+
+<h3>Design</h3>
+
+<p>This Application was designed to provide a useful tool to compare common fruits among them based on several comparison criterias, such as calories, fiber content, nutritional value expressed in Completeness Score, Fullness Factor and % Carbohydrate, Protein or Fat. </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>How it works</h2>
+    <h2>How it works / Functionality</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>The user should provide 4 inputs (all of them have predetermined values):</p>
+
+<ol>
+<li>Portion measure: 100 grams or standard portion (1 median fruit or 1 cup, depending on the fruit)</li>
+<li>Criteria: nutritional criteria to be considered to provide a recommendation. </li>
+<li>Fruit 1: Main fruit to be compared. </li>
+<li>Fruit 2: Fruit or fruits to be compared against. </li>
+</ol>
+
+<p>Based on the input, <strong> 3 outputs are automatically updated: </strong></p>
+
+<ol>
+<li>A statement with the Winner or recommendation. </li>
+<li>A graph adapted according to the criteria selected to show the comparison. </li>
+<li>A detailed table with the information for the selected fruits. </li>
+</ol>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Slide 3</h2>
+    <h2>Technical Architecture</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>The application is available at: <a href="https://mariplaza.shinyapps.io/ShinyFinalProject">Mari Plaza&#39;s Shinyapps</a></p>
+
+<p>There are 3 main files for this Application: </p>
+
+<ul>
+<li><p><strong>FruitApp.R:</strong> includes all the functions required to build the data and format it according to the inputs provider by the user. </p></li>
+<li><p><strong>ui.R:</strong> include the elements of the user interface defining the documentation, the 4 inputs and 3 outputs layout. </p></li>
+<li><p><strong>server.R:</strong> perform the calculations using the inputs provide by the user to get the updated outputs. </p></li>
+</ul>
+
+<p>The detailed code documentation is direct by the code in the following <a href="https://github.com/MariPlaza/Data_Product">github</a></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Slide 4</h2>
+    <h2>Data Source</h2>
   </hgroup>
   <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+    <p>The data source comes from: <a href="http://nutritiondata.self.com/">Nutrition Dataself</a>. The main dataframe is built through the function Fruit_Database and then data is adapted through the function PrepareData according to the given inputs to provide the 3 outputs. </p>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Link to use it.</h2>
-  </hgroup>
-  <article data-timings="">
-    
+<pre><code class="r">source(&quot;FruitApp.R&quot;)
+dataset &lt;- Fruit_Database()
+DataPlot &lt;- Prepare_Data(dataset, &quot;Apple&quot;, &quot;Banana&quot;, &quot;Fiber&quot;)
+head(DataPlot)
+</code></pre>
+
+<pre><code>##        Category Fiber Calories Completeness_Score Fullness_Score
+## Banana  Fruit 2     3       89                 42            2.5
+## Apple   Fruit 1     2       52                 32            3.3
+##        Nutritious %Carb %Fat %Prot  Fruit
+## Banana        2.8  0.93 0.03  0.04 Banana
+## Apple         2.7  0.95 0.03  0.02  Apple
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -98,32 +136,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Motivation of the Application'>
+        data-slide=1 title='Overview'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='How it works'>
+        data-slide=2 title='How it works / Functionality'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Slide 3'>
+        data-slide=3 title='Technical Architecture'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Slide 4'>
+        data-slide=4 title='Data Source'>
          4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Link to use it.'>
-         5
       </a>
     </li>
   </ul>

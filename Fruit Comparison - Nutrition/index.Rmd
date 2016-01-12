@@ -1,6 +1,6 @@
 ---
-title       : Fruit comparison Application
-subtitle    : A practical tool for better choises
+title       : Fruits comparison Application
+subtitle    : A practical tool for better choices
 author      : Maria Ines Plaza Schwarck
 job         : Data Analyst
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -11,23 +11,58 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Motivation of the Application
-
-Nowadays, there are plenty of information regarding Nutrition, nonetheless the population is confused because it is not clear 
-
---- .class #id 
-
-## How it works
+## Overview
 
 
---- .class #id 
+### Motivation of the Application
 
-## Slide 3
+Nowadays, there are plenty of information and databases regarding Nutrition, nonetheless the population is normally confused because it is not clear when a food is convenient or not in terms of health and nutrition. As almost everything in life, the decision depends on what you want to reach, and depending on what is your goal, the criterias for the decision are going to be different.
 
---- .class #id 
+### Design
+This Application was designed to provide a useful tool to compare common fruits among them based on several comparison criterias, such as calories, fiber content, nutritional value expressed in Completeness Score, Fullness Factor and % Carbohydrate, Protein or Fat. 
 
-## Slide 4
 
---- .class #id 
+--- 
+## How it works / Functionality
 
-## Link to use it. 
+The user should provide 4 inputs (all of them have predetermined values):
+
+1. Portion measure: 100 grams or standard portion (1 median fruit or 1 cup, depending on the fruit)
+2. Criteria: nutritional criteria to be considered to provide a recommendation. 
+3. Fruit 1: Main fruit to be compared. 
+4. Fruit 2: Fruit or fruits to be compared against. 
+
+Based on the input, <strong> 3 outputs are automatically updated: </strong>
+
+1. A statement with the Winner or recommendation. 
+2. A graph adapted according to the criteria selected to show the comparison. 
+3. A detailed table with the information for the selected fruits. 
+
+
+--- 
+## Technical Architecture
+
+The application is available at: [Mari Plaza's Shinyapps](https://mariplaza.shinyapps.io/ShinyFinalProject)
+
+There are 3 main files for this Application: 
+
+- <strong>FruitApp.R:</strong> includes all the functions required to build the data and format it according to the inputs provider by the user. 
+
+- <strong>ui.R:</strong> include the elements of the user interface defining the documentation, the 4 inputs and 3 outputs layout. 
+
+- <strong>server.R:</strong> perform the calculations using the inputs provide by the user to get the updated outputs. 
+
+The detailed code documentation is direct by the code in the following [github](https://github.com/MariPlaza/Data_Product)
+
+--- 
+## Data Source
+
+The data source comes from: [Nutrition Dataself](http://nutritiondata.self.com/). The main dataframe is built through the function Fruit_Database and then data is adapted through the function PrepareData according to the given inputs to provide the 3 outputs. 
+
+
+```{r}
+source("FruitApp.R")
+dataset <- Fruit_Database()
+DataPlot <- Prepare_Data(dataset, "Apple", "Banana", "Fiber")
+head(DataPlot)
+```

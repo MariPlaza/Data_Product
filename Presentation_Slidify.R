@@ -8,4 +8,4 @@ author("Fruit Comparison - Nutrition")
 slidify('index.Rmd')
 browseURL('index.html')
 
-publish_github(mariplaza,repo)
+publish_github("Data_Product","mariplaza")
